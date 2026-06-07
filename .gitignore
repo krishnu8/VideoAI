@@ -1,0 +1,39 @@
+# Environments
+venv/
+env/
+.env
+.env.local
+
+# Node
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.venv
+pip-selfcheck.json
+
+# Media & Temp Files
+*.mp4
+*.mp3
+*.wav
+*.jpg
+*.jpeg
+*.png
+temp/
+tmp/
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
