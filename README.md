@@ -81,3 +81,19 @@ The backend is configured for 1-click deployment on Railway using Nixpacks.
 
 ## Note on Video Storage
 By default, rendered videos are stored in the server's temporary directory (`/tmp`) and served directly back to the user for download. Because Railway's filesystem is ephemeral, these files are wiped whenever the server restarts or redeploys. Download your videos immediately after they finish rendering!
+
+
+
+
+https://github.com/user-attachments/assets/20a16e31-d72b-4174-aa97-90a43537d36d
+
+
+
+https://github.com/user-attachments/assets/f0c00545-cc18-4787-888b-a0a7d7b509e9
+
+
+
+
+
+https://github.com/user-attachments/assets/f394d1da-d372-4e61-b528-54d25db98fdd
+
