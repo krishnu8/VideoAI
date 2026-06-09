@@ -282,48 +282,48 @@ def get_output_media(
     background_clip = VideoFileClip(bg_filename)
     visual_clips.append(background_clip)
 
-    # --- Add Captions ---
-    if captions_enabled:
-        _cb("Rendering captions...", 80)
-        font_size = config.get_caption_font_size()
-        font_color = config.get_caption_font_color()
-        stroke_width = config.get_caption_stroke_width()
-        stroke_color = config.get_caption_stroke_color()
-        font_face = config.get_caption_font_face()
-        caption_position = config.get_caption_position()
-
-        bottom_y = VIDEO_HEIGHT - 150
-        mid_y = VIDEO_HEIGHT // 2
-
-        if caption_position == 'bottom_center':
-            position = ("center", bottom_y)
-        elif caption_position == 'bottom_left':
-            position = ("left", bottom_y)
-        elif caption_position == 'bottom_right':
-            position = ("right", bottom_y)
-        elif caption_position == 'top':
-            position = ("center", 100)
-        elif caption_position == 'center':
-            position = ("center", mid_y)
-        else:
-            position = ("center", bottom_y)
-
-        for (t1, t2), text in timed_captions:
-            try:
-                # TextClip requires ImageMagick to be configured correctly
-                text_clip = TextClip(
-                    txt=text,
-                    font=font_face,
-                    fontsize=font_size,
-                    color=font_color,
-                    stroke_width=stroke_width,
-                    stroke_color=stroke_color,
-                    method="label"
-                )
-                text_clip = text_clip.set_start(t1).set_end(t2).set_position(position)
-                visual_clips.append(text_clip)
-            except Exception as e:
-                print(f"Failed to generate caption for text '{text}': {e}")
+    # --- Add Captions --- (DISABLED)
+    # if captions_enabled:
+    #     _cb("Rendering captions...", 80)
+    #     font_size = config.get_caption_font_size()
+    #     font_color = config.get_caption_font_color()
+    #     stroke_width = config.get_caption_stroke_width()
+    #     stroke_color = config.get_caption_stroke_color()
+    #     font_face = config.get_caption_font_face()
+    #     caption_position = config.get_caption_position()
+    #
+    #     bottom_y = VIDEO_HEIGHT - 150
+    #     mid_y = VIDEO_HEIGHT // 2
+    #
+    #     if caption_position == 'bottom_center':
+    #         position = ("center", bottom_y)
+    #     elif caption_position == 'bottom_left':
+    #         position = ("left", bottom_y)
+    #     elif caption_position == 'bottom_right':
+    #         position = ("right", bottom_y)
+    #     elif caption_position == 'top':
+    #         position = ("center", 100)
+    #     elif caption_position == 'center':
+    #         position = ("center", mid_y)
+    #     else:
+    #         position = ("center", bottom_y)
+    #
+    #     for (t1, t2), text in timed_captions:
+    #         try:
+    #             # TextClip requires ImageMagick to be configured correctly
+    #             text_clip = TextClip(
+    #                 txt=text,
+    #                 font=font_face,
+    #                 fontsize=font_size,
+    #                 color=font_color,
+    #                 stroke_width=stroke_width,
+    #                 stroke_color=stroke_color,
+    #                 method="label"
+    #             )
+    #             text_clip = text_clip.set_start(t1).set_end(t2).set_position(position)
+    #             visual_clips.append(text_clip)
+    #         except Exception as e:
+    #             print(f"Failed to generate caption for text '{text}': {e}")
 
     audio_file_clip = AudioFileClip(audio_file_path)
 

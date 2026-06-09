@@ -30,11 +30,12 @@ app = FastAPI(
 )
 
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
+allow_creds = "*" not in CORS_ORIGINS
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
-    allow_credentials=True,
+    allow_credentials=allow_creds,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -168,6 +169,9 @@ def _run_pipeline(
         _update_job(job_id, status="done", output_path=result_path)
 
     except Exception as e:
+        import traceback
+        trace = traceback.format_exc()
+        print(f"[{job_id[:8]}] Exception Traceback:\n{trace}")
         _log(job_id, f"❌ Error: {str(e)}")
         _update_job(job_id, status="error", error=str(e))
     finally:
